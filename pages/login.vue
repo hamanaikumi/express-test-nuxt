@@ -17,10 +17,8 @@
             label="メールアドレスを入力"
             outlined
           />
-          {{ valid }}
-        </v-col>
-      </v-row></v-form
-    >
+        </v-col> </v-row
+    ></v-form>
     <v-btn :disabled="!valid" @click="login">ログイン</v-btn>
   </div>
 </template>
@@ -35,6 +33,7 @@ export default {
       name: '',
       // メールアドレス
       email: '',
+      //   入力値の有効性チェック
       valid: false,
       // バリデーションチェック用
       rules: {
@@ -53,14 +52,11 @@ export default {
      * ログインをする.
      */
     async login() {
-      // console.log('login')
       const res = await this.$axios.$post('http://localhost:8080/login/', {
         name: this.name,
         email: this.email,
       })
-      //   console.log(res)
       if (res.length === 0) {
-        //   console.log('failed')
         return
       }
       // ログインに成功したらメイン画面に遷移
