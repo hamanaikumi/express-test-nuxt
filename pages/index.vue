@@ -18,7 +18,7 @@
         />
       </v-col>
     </v-row>
-    <v-btn>登録</v-btn>
+    <v-btn @click="register">登録</v-btn>
   </div>
 </template>
 
@@ -27,8 +27,11 @@ export default {
   name: 'IndexPage',
   data() {
     return {
+      // ユーザー名
       name: '',
+      // メールアドレス
       email: '',
+      // バリデーションチェック用
       rules: {
         required: (value) => !!value || '入力してください.',
         counter: (value) =>
@@ -40,6 +43,25 @@ export default {
         },
       },
     }
+  },
+  methods: {
+    /**
+     * ユーザー登録をする.
+     */
+    async register() {
+      // console.log('login')
+      const res = await this.$axios.$post('http://localhost:8080/register/', {
+        name: this.name,
+        email: this.email,
+      })
+      // console.log(res)
+      if (res.length === 0) {
+        console.log('failed')
+        return
+      }
+      // 登録に成功したらログイン画面に遷移
+      this.$router.push('/login')
+    },
   },
 }
 </script>
