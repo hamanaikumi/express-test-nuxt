@@ -28,7 +28,11 @@
           >
             <v-row class="align-center">
               <v-col cols="1" class="mr-2">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  :checked="task.taskCompleted !== '0'"
+                  @change="complete(i, j)"
+                />
               </v-col>
               <span v-show="task.taskCompleted === '0'">
                 {{ task.taskContent }}
@@ -47,14 +51,15 @@
   </v-container>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: 'MainPage',
 
   data() {
     return {
       // 表示用タスク一覧
-      showTasks: Array({}),
+      // eslint-disable-next-line no-array-constructor
+      showTasks: Array<any>(),
     }
   },
   created() {
@@ -95,6 +100,41 @@ export default {
         })
       }
     },
+    /**
+     * タスクの完了/未完了を切り替える.(0:未、1:完)
+     * @param i -showTask内のカテゴリー位置
+     * @param j -showTask内のタスク位置
+     */
+    async complete(i: number, j: number) {
+      const userId = Number(this.$route.params.id)
+      const completeNum = this.showTasks[i].task[j].taskCompleted
+      const taskId = this.showTasks[i].task[j].taskId
+      if (completeNum === '0') {
+        this.showTasks[i].task[j].taskCompleted = '1'
+        await this.$axios.$post(
+          `http://localhost:8080/categories/complete/${userId}`,
+          {
+            task_id: taskId,
+            task_completed: '1',
+          }
+        )
+      } else {
+        this.showTasks[i].task[j].taskCompleted = '0'
+        await this.$axios.$post(
+          `http://localhost:8080/categories/complete/${userId}`,
+          {
+            task_id: taskId,
+            task_completed: '0',
+          }
+        )
+      }
+    },
   },
 }
 </script>
+<style scoped>
+.completed {
+  text-decoration: line-through;
+  color: grey;
+}
+</style>
