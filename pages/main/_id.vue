@@ -28,7 +28,11 @@
           >
             <v-row class="align-center">
               <v-col cols="1" class="mr-2">
-                <input type="checkbox" @change="complete(i, j)" />
+                <input
+                  type="checkbox"
+                  :checked="task.taskCompleted !== '0'"
+                  @change="complete(i, j)"
+                />
               </v-col>
               <span v-show="task.taskCompleted === '0'">
                 {{ task.taskContent }}
@@ -105,22 +109,22 @@ export default {
       const userId = Number(this.$route.params.id)
       const completeNum = this.showTasks[i].task[j].taskCompleted
       const taskId = this.showTasks[i].task[j].taskId
-      if (completeNum === 0) {
-        this.showTasks[i].task[j].taskCompleted = 1
+      if (completeNum === '0') {
+        this.showTasks[i].task[j].taskCompleted = '1'
         await this.$axios.$post(
           `http://localhost:8080/categories/complete/${userId}`,
           {
             task_id: taskId,
-            task_completed: 1,
+            task_completed: '1',
           }
         )
       } else {
-        this.showTasks[i].task[j].taskCompleted = 0
+        this.showTasks[i].task[j].taskCompleted = '0'
         await this.$axios.$post(
           `http://localhost:8080/categories/complete/${userId}`,
           {
             task_id: taskId,
-            task_completed: 0,
+            task_completed: '0',
           }
         )
       }
