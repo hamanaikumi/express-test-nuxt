@@ -15,9 +15,11 @@
 </template>
 
 <script>
-import index from '~/pages/index.vue'
+// import index from '~/pages/index.vue'
+// import login from '~/pages/login.vue'
+// import main from '~/pages/main.vue'
 export default {
-  components: { index },
+  // components: { index,login },
   name: 'DefaultLayout',
   data() {
     return {

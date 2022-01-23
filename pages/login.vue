@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  name: 'IndexPage',
+  name: 'LoginPage',
 
   data() {
     return {
@@ -60,7 +60,7 @@ export default {
         return
       }
       // ログインに成功したらメイン画面に遷移
-      this.$router.push('/main')
+      this.$router.push({ path: `/main/${res[0].id}` })
     },
   },
 }
