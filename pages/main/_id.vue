@@ -41,6 +41,12 @@
               <span v-show="task.taskCompleted !== '0'" class="completed">
                 {{ task.taskContent }}
               </span>
+              <span>
+                <DeleteTask
+                  :task-id="task.taskId.toLocaleString()"
+                  @showTasks="parentEvent"
+                />
+              </span>
             </v-row>
           </v-card-text>
           <AddTask
