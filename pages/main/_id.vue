@@ -21,7 +21,7 @@
               <!-- DeleteCategory -->
             </span>
           </v-row>
-          <v-divider class="mx-4 mb-2"></v-divider>
+          <v-divider class="mx-4 mb-6"></v-divider>
           <v-card-text
             v-for="(task, j) of category.task"
             :key="j"
@@ -41,11 +41,12 @@
               <span v-show="task.taskCompleted !== '0'" class="completed">
                 {{ task.taskContent }}
               </span>
-              <span>
-                <!-- Add Tasks -->
-              </span>
             </v-row>
           </v-card-text>
+          <AddTask
+            :category-id="category.categoryId.toLocaleString()"
+            @showTasks="parentEvent"
+          />
         </v-card>
       </v-col>
     </v-row>
