@@ -41,6 +41,12 @@
               <span v-show="task.taskCompleted !== '0'" class="completed">
                 {{ task.taskContent }}
               </span>
+              <span>
+                <DeleteTask
+                  :task-id="task.taskId.toLocaleString()"
+                  @showTasks="parentEvent"
+                />
+              </span>
             </v-row>
           </v-card-text>
           <AddTask
@@ -65,6 +71,7 @@ export default {
     }
   },
   created() {
+    // タスク一覧を表示する.
     this.getTasks()
   },
   methods: {
@@ -132,7 +139,7 @@ export default {
       }
     },
     /**
-     * 子コンポーネントからのイベント発火
+     * 子コンポーネントからのイベント発火で最新のタスク一覧を表示する.
      */
     parentEvent() {
       this.getTasks()
