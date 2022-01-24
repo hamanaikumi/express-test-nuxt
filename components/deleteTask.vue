@@ -21,8 +21,6 @@ export default {
      * タスクを削除する.
      */
     async deleteTask() {
-      console.log(this.taskId)
-
       const userId = Number(this.$route.params.id)
       await this.$axios.$post(
         `http://localhost:8080/categories/deleteTask/${userId}`,

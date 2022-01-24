@@ -22,6 +22,7 @@
 export default {
   name: 'AddTaskPage',
   props: {
+    // カテゴリーID
     categoryId: {
       type: String,
       required: true,

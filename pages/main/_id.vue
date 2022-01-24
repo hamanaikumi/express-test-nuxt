@@ -71,6 +71,7 @@ export default {
     }
   },
   created() {
+    // タスク一覧を表示する.
     this.getTasks()
   },
   methods: {
@@ -138,7 +139,7 @@ export default {
       }
     },
     /**
-     * 子コンポーネントからのイベント発火
+     * 子コンポーネントからのイベント発火で最新のタスク一覧を表示する.
      */
     parentEvent() {
       this.getTasks()
