@@ -18,7 +18,10 @@
               {{ category.categoryName }}
             </v-card-title>
             <span>
-              <!-- DeleteCategory -->
+              <DeleteCategory
+                :category-id="category.categoryId.toLocaleString()"
+                @showTasks="parentEvent"
+              />
             </span>
           </v-row>
           <v-divider class="mx-4 mb-6"></v-divider>
