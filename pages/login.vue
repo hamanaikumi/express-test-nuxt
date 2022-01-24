@@ -1,26 +1,34 @@
 <template>
-  <div>
-    <div>ログイン</div>
+  <v-container>
     <v-form v-model="valid" lazy-validation
-      ><v-row
-        ><v-col cols="12" sm="6">
+      ><v-row justify="center" align-content="center">
+        <v-col cols="12" sm="6" class="px-0 py-0 mt-10 mb-4">
           <v-text-field
             v-model="name"
             :rules="[rules.required]"
             label="ユーザー名を入力"
             outlined
-        /></v-col>
-        <v-col cols="12" sm="6">
+          />
           <v-text-field
             v-model="email"
             :rules="[rules.required, rules.email]"
             label="メールアドレスを入力"
             outlined
           />
-        </v-col> </v-row
-    ></v-form>
-    <v-btn :disabled="!valid" @click="login">ログイン</v-btn>
-  </div>
+        </v-col>
+      </v-row>
+    </v-form>
+    <v-row justify="center">
+      <v-btn
+        depressed
+        color="info"
+        class="font-weight-bold"
+        :disabled="!valid"
+        @click="login"
+        >ログイン</v-btn
+      >
+    </v-row>
+  </v-container>
 </template>
 
 <script>
