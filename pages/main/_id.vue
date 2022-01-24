@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <AddCategory @showCategories="parentEvent" />
     <v-row>
       <v-col
         v-for="(category, i) of showTasks"
@@ -128,6 +129,12 @@ export default {
           }
         )
       }
+    },
+    /**
+     * 子コンポーネントからのイベント発火
+     */
+    parentEvent() {
+      this.getTasks()
     },
   },
 }
