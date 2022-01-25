@@ -15,23 +15,14 @@
     <v-container>
       <Nuxt />
     </v-container>
-    <v-footer :absolute="!fixed" app>
+    <v-footer>
       <span>&copy; {{ new Date().getFullYear() }}</span>
     </v-footer>
   </v-app>
 </template>
 
 <script>
-// import index from '~/pages/index.vue'
-// import login from '~/pages/login.vue'
-// import main from '~/pages/main.vue'
 export default {
-  // components: { index,login },
   name: 'DefaultLayout',
-  data() {
-    return {
-      fixed: false,
-    }
-  },
 }
 </script>
