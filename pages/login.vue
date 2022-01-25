@@ -67,7 +67,6 @@ export default {
       if (res.length === 0) {
         return
       }
-      // ログインに成功したらメイン画面に遷移
       this.$router.push({ path: `/main/${res[0].id}` })
     },
   },

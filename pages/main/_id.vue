@@ -65,7 +65,6 @@
 <script lang="ts">
 export default {
   name: 'MainPage',
-
   data() {
     return {
       // 表示用タスク一覧
